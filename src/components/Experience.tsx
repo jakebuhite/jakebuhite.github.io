@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
 
 type ExperienceItemProps = {
   position: string;
@@ -48,7 +49,7 @@ const Experience: React.FC = () => {
       tasks: [
         "Evaluated the needs and weaknesses of each student.",
         "Explained the fundamentals of C++ and concepts such as object-oriented design.",
-        "Addressed and resolved student inquiries, providing comprehensive support while fostering positive learning"
+        "Addressed and resolved student inquiries, providing comprehensive support while fostering positive learning."
       ]
     },
     {
@@ -77,7 +78,13 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="section">
-      <div className="container">
+      <motion.div
+        className="container"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <h2 className="text-center">@Experience</h2>
         <p className="text-center comment">/* Here's a look at my journey so far */</p>
         <div className="timeline">
@@ -85,7 +92,7 @@ const Experience: React.FC = () => {
             <ExperienceItem key={index} {...exp} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
