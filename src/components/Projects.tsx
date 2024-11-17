@@ -112,6 +112,7 @@ const Projects: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           @Projects
@@ -120,6 +121,7 @@ const Projects: React.FC = () => {
           className="comment"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           /* Here are some projects I've worked on recently */
