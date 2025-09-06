@@ -36,7 +36,7 @@ const Experience: React.FC = () => {
       date: "June 2024 - Present",
       location: "Hoboken, NJ",
       tasks: [
-        "Successfully optimized API endpoints by designing and implementing efficient pagination techniques, resulting in a 30% reduction in p99 response times.",
+        "Maintained a data pipeline ingesting data from 5,200 stores into Cosmos DB, ensuring near real-time availability",
         "Proactively identified, resolved, and communicated impactful API bug fixes.",
         "Utilized Splunk and Ktor to query, preprocess, and analyze API call logs."
       ]
