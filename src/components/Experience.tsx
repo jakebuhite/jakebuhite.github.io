@@ -85,7 +85,7 @@ const Experience: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <h2 className="text-center">@Experience</h2>
+        <h2 className="text-center section-heading">@Experience</h2>
         <p className="text-center comment">/* Here's a look at my journey so far */</p>
         <div className="timeline">
           {experiences.map((exp, index) => (

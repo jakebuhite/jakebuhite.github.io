@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Navbar: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav id="navbar" className="navbar navbar-expand-lg fixed-top">
+    <nav id="navbar" className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
-        <a className="navbar-brand" href="#now">Jake Buhite</a>
+        <a className="navbar-brand" href="#home">Jake Buhite</a>
         <button
           className="navbar-toggler"
           type="button"
