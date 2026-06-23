@@ -113,9 +113,9 @@ h2 {
 }
 
 .tech-banner {
-  background: rgba(67, 97, 238, 0.15);
-  border: 1px solid rgba(76, 201, 240, 0.25);
-  color: var(--accent-end);
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: rgb(196, 148, 255);
   padding: 3px 10px;
   margin: 3px 4px 3px 0;
   border-radius: 4px;
@@ -128,7 +128,7 @@ h2 {
 }
 
 .tech-banner:hover {
-  background: rgba(67, 97, 238, 0.3);
+  background: rgba(168, 85, 247, 0.25);
 }
 
 /* Navbar */
