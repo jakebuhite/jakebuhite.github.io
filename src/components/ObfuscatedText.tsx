@@ -48,7 +48,7 @@ const ObfuscatedText: React.FC = () => {
       if (genNum === originalText) {
         clearInterval(interval);
       }
-    }, 45);
+    }, 25);
 
     return () => clearInterval(interval);
   }, [originalText]);
