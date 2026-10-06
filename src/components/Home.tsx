@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       >
         <span className="status-pill">
           <span className="dot" />
-          Software Engineer II at Walmart Global Tech
+          Software Engineer III at Walmart Global Tech
         </span>
         <ObfuscatedText />
         <p className="hero-lead">

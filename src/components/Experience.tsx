@@ -38,7 +38,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ position, company, date
 const Experience: React.FC = () => {
   const experiences = [
     {
-      position: "Software Engineer II",
+      position: "Software Engineer III",
       company: "Walmart Global Tech",
       date: "June 2024 - Present",
       location: "Hoboken, NJ",
