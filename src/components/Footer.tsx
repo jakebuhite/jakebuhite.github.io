@@ -3,7 +3,10 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <footer>
-      <p>&copy; 2024 Jake Buhite. All rights reserved.</p>
+      <div className="container">
+        <span>&copy; {new Date().getFullYear()} Jake Buhite</span>
+        <a href="#home">Back to top ↑</a>
+      </div>
     </footer>
   );
 };

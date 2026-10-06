@@ -11,38 +11,39 @@ type ProjectCardProps = {
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, image, techStack, description, link, type }) => {
+  // Only projects with a real screenshot show an image; the shared placeholder is skipped.
+  const hasImage = !image.includes('default-project');
+
   return (
-    <motion.div
-      className="col-lg-4 col-md-6 mb-4"
-      initial={{ opacity: 0, y: 50 }}
+    <motion.article
+      className={`project-card ${hasImage ? 'featured' : ''}`}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="card shadow-sm h-100">
-        <img src={image} className="card-img-top project-image" alt={title} />
-        <div className="card-body">
-          <p className="project-type">{type}</p>
-          <h5 className="card-title">{title}</h5>
-          <div className="tech-stack mb-3">
-            {techStack.map((tech, index) => (
-              <span className="tech-banner" key={index}>
-                {tech}
-              </span>
-            ))}
-          </div>
-          <p className="card-text">{description}</p>
-          <a
-            href={link}
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Repo
-          </a>
+      {hasImage && <img src={image} className="project-image" alt={title} />}
+      <div className="project-body">
+        <span className="project-type">{type}</span>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div className="tech-stack">
+          {techStack.map((tech, index) => (
+            <span className="tech-banner" key={index}>
+              {tech}
+            </span>
+          ))}
         </div>
+        <a
+          href={link}
+          className="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View repo
+        </a>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
@@ -95,50 +96,19 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="section text-center py-5">
-      <motion.div
-        className="container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 },
-          },
-        }}
-      >
-        <motion.h2
-          className="section-heading"
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          @Projects
-        </motion.h2>
-        <motion.p
-          className="comment"
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          /* Here are some projects I've worked on recently */
-        </motion.p>
-        <motion.div
-          className="row justify-content-center"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-          }}
-        >
+    <section id="projects" className="section">
+      <div className="container">
+        <div className="section-head">
+          <span className="eyebrow">02 / Projects</span>
+          <h2>Things I've built</h2>
+          <p>Some projects I've worked on recently.</p>
+        </div>
+        <div className="project-grid">
           {projectData.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 };

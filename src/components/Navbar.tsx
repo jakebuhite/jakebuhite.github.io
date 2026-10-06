@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+const links = [
+  { href: '#home', label: 'Home' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+];
+
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -10,33 +17,29 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav id="navbar" className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'scrolled' : ''}`}>
+    <nav id="navbar" className={`navbar ${scrolled ? 'scrolled' : ''} ${open ? 'open' : ''}`}>
       <div className="container">
-        <a className="navbar-brand" href="#home">Jake Buhite</a>
+        <a className="navbar-brand" href="#home">
+          <span className="brand-mark">JB</span>
+          Jake Buhite
+        </a>
         <button
-          className="navbar-toggler"
+          className="nav-toggle"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-expanded={open}
           aria-label="Toggle navigation"
+          onClick={() => setOpen(!open)}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#home">Home</a>
+        <ul className="nav-links" id="nav-links">
+          {links.map(({ href, label }) => (
+            <li key={href}>
+              <a className="nav-link" href={href} onClick={() => setOpen(false)}>{label}</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#experience">Experience</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#projects">Projects</a>
-            </li>
-          </ul>
-        </div>
+          ))}
+        </ul>
       </div>
     </nav>
   );

@@ -1,18 +1,33 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ObfuscatedText from './ObfuscatedText';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faArrowDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Home: React.FC = () => {
   return (
-    <section id="home" className="section">
-      <div className="container text-center">
+    <section id="home" className="hero">
+      <motion.div
+        className="container"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <span className="status-pill">
+          <span className="dot" />
+          Software Engineer II at Walmart Global Tech
+        </span>
         <ObfuscatedText />
-        <p className="comment">/* Software Engineer specializing in back-end development */</p>
+        <p className="hero-lead">
+          Software engineer specializing in <strong>back-end development</strong>,
+          building reliable APIs and data pipelines at scale.
+        </p>
         <div className="hero-actions">
-          <a href="#projects" className="btn-hero">View My Work</a>
-          <a href="path/to/your/resume.pdf" className="btn-outline-accent" target="_blank" rel="noopener noreferrer">
+          <a href="#projects" className="btn btn-solid">
+            View my work <FontAwesomeIcon icon={faArrowDown} />
+          </a>
+          <a href="/jbuhite_resume.pdf" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Resume
           </a>
         </div>
@@ -23,11 +38,11 @@ const Home: React.FC = () => {
           <a href="https://linkedin.com/in/jake-buhite" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="https://youtube.com/username" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <FontAwesomeIcon icon={faYoutube} />
+          <a href="mailto:jakebuhite@gmail.com" aria-label="Email">
+            <FontAwesomeIcon icon={faEnvelope} />
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

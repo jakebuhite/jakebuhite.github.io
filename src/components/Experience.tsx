@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar, faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 
 type ExperienceItemProps = {
@@ -13,18 +11,27 @@ type ExperienceItemProps = {
 
 const ExperienceItem: React.FC<ExperienceItemProps> = ({ position, company, date, location, tasks }) => {
   return (
-    <div className="timeline-item">
-      <div className="timeline-content">
-        <h5>{position} @ <strong className="company">{company}</strong></h5>
-        <span><FontAwesomeIcon icon={faCalendar} /> {date}</span>
-        <p><FontAwesomeIcon icon={faMapMarker} /> {location}</p>
+    <motion.article
+      className="experience-item"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="experience-meta">
+        <span className="date">{date}</span>
+        <span className="location">{location}</span>
+      </div>
+      <div className="experience-body">
+        <h3>{position}</h3>
+        <p className="company">{company}</p>
         <ul>
           {tasks.map((task, index) => (
             <li key={index}>{task}</li>
           ))}
         </ul>
       </div>
-    </div>
+    </motion.article>
   );
 };
 
@@ -78,21 +85,18 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="section">
-      <motion.div
-        className="container"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <h2 className="text-center section-heading">@Experience</h2>
-        <p className="text-center comment">/* Here's a look at my journey so far */</p>
-        <div className="timeline">
+      <div className="container">
+        <div className="section-head">
+          <span className="eyebrow">01 / Experience</span>
+          <h2>Where I've worked</h2>
+          <p>A look at my journey so far.</p>
+        </div>
+        <div className="experience-list">
           {experiences.map((exp, index) => (
             <ExperienceItem key={index} {...exp} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
